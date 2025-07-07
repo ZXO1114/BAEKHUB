@@ -5,6 +5,6 @@ i_str = input()
 result = 0
 
 for i in range(n):
-    result += ((ord(i_str[i])-96) * (r**i)) % M
+    result += ((ord(i_str[i])-96) * (r**i))
 
-print(result)
+print(result % M)
