@@ -25,34 +25,74 @@ numbers 배열 원소의 값은 0 이상 9 이하인 정수입니다.
 6. 거리가 같을시 hand를 따라서
 '''
 
+# def solution(numbers, hand):
+#     answer = ''
+#     left_hand, right_hand = 10, 12 
+#     # print(left_hand, right_hand)
+#     left_distance, right_distance = 0, 0
+#     # print(left_distance, right_distance)
+    
+#     for number in numbers:
+#         if number == 0: number = 11
+        
+#         if number % 3 == 1:
+#             left_hand = number
+#             answer += 'L'
+#         elif number % 3 == 0:
+#             right_hand = number
+#             answer += 'R'
+#         else:
+#             left_distance = abs(number - left_hand)
+#             right_distance = abs(number - right_hand)
+            
+#             if left_distance == 1 or left_distance == 3: left_distance = 1
+#             elif left_distance == 2 or left_distance == 4 or left_distance == 6: left_distance = 2
+#             elif left_distance == 5 or left_distance == 7 or left_distance == 9: left_distance = 3
+#             elif left_distance == 8 or left_distance == 10: left_distance = 4
+            
+#             if right_distance == 1 or right_distance == 3: right_distance = 1
+#             elif right_distance == 2 or right_distance == 4 or right_distance == 6: right_distance = 2
+#             elif right_distance == 5 or right_distance == 7 or right_distance == 9: right_distance = 3
+#             elif right_distance == 8 or right_distance == 10: right_distance = 4
+            
+            
+                
+#             if left_distance == right_distance:
+#                 if hand == "left":
+#                     left_hand = number
+#                     answer += 'L'
+#                 else:
+#                     right_hand = number
+#                     answer += 'R'
+#             elif left_distance < right_distance:
+#                 left_hand = number
+#                 answer += 'L'
+#             else:                    
+#                 right_hand = number
+#                 answer += 'R'
+#     return answer
+
+
 def solution(numbers, hand):
     answer = ''
     left_hand, right_hand = 10, 12 
+    score_dict = {0:0, 1:1, 3:1, 2:2,4:2,6:2, 5:3,7:3,9:3, 8:4,10:4}
     # print(left_hand, right_hand)
     left_distance, right_distance = 0, 0
     # print(left_distance, right_distance)
     
     for number in numbers:
-        if number == 1 or number == 4 or number == 7:
+        if number == 0: number = 11
+        
+        if number % 3 == 1:
             left_hand = number
             answer += 'L'
-        elif number == 3 or number == 6 or number == 9:
+        elif number % 3 == 0:
             right_hand = number
             answer += 'R'
         else:
-            if number == 0: number = 11
-            left_distance = abs(number - left_hand)
-            right_distance = abs(number - right_hand)
-            
-            if left_distance == 1 or left_distance == 3: left_distance = 1
-            elif left_distance == 2 or left_distance == 4 or left_distance == 6: left_distance = 2
-            elif left_distance == 5 or left_distance == 7 or left_distance == 9: left_distance = 3
-            elif left_distance == 8 or left_distance == 10: left_distance = 4
-            
-            if right_distance == 1 or right_distance == 3: right_distance = 1
-            elif right_distance == 2 or right_distance == 4 or right_distance == 6: right_distance = 2
-            elif right_distance == 5 or right_distance == 7 or right_distance == 9: right_distance = 3
-            elif right_distance == 8 or right_distance == 10: right_distance = 4
+            left_distance = score_dict[abs(number - left_hand)]
+            right_distance = score_dict[abs(number - right_hand)]
                 
             if left_distance == right_distance:
                 if hand == "left":
