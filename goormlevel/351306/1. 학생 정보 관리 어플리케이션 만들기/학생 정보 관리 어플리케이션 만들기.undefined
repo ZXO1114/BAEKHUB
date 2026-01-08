@@ -1,0 +1,16 @@
+# -*- coding: utf-8 -*-
+# UTF-8 encoding when using korean
+n = int(input())
+people_list = []
+for _ in range(n):
+	f,name = map(str,input().split())
+	if f == 'add':
+		people_list.append(name)
+	else:
+		c = 0
+		l = len(name)
+		for people in people_list:
+			if people[:l] == name:
+				c += 1
+		print(c)
+		
