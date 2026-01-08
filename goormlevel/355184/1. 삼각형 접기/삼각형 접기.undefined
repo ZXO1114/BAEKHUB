@@ -1,0 +1,6 @@
+# -*- coding: utf-8 -*-
+# UTF-8 encoding when using korean
+import math
+b, c = map(int,input().split())
+g = math.gcd(b,c)
+print(f'{b//g}:{c//g}')
